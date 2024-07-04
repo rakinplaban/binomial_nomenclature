@@ -5,3 +5,5 @@ In taxonomy, ***Binomial Nomenclature*** ("two-term naming system"), also called
 
 # References
 1. Binomial nomenclature. (2024). In Wikipedia. https://en.wikipedia.org/w/index.php?title=Binomial_nomenclature&oldid=1227348962
+2. Introduction—Django-allauth. (n.d.). Retrieved July 4, 2024, from https://docs.allauth.org/en/latest/introduction/index.html
+
