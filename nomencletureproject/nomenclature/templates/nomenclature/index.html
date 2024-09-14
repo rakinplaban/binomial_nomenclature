@@ -1,1 +1,22 @@
-<h1>H1</h1>
+{% extends 'layout.html' %}
+    {% block title %}Home{% endblock %}
+    {% block body %}
+        
+        <div class="grid-container">
+            <div class="grid-header">
+                <div class="grid-item">Scientific Name</div>
+                <div class="grid-item">Real Name</div>
+            </div>
+            {% for sci_name in scientific_name %}
+                <div class="grid-row">
+                    <div class="grid-item fw-bold fst-italic">{{ sci_name.sci_name }}</div>
+                    <div class="grid-item">{{ sci_name.real_name }}</div>
+                </div>
+            {% endfor %}
+
+            
+        </div>
+
+        
+    {% endblock %}
+
