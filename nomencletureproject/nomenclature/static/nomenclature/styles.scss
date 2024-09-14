@@ -1,0 +1,73 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.grid-header {
+    display: contents; /* Use contents to make header align with rows */
+    font-weight: bold;
+}
+
+.grid-item {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+.grid-row {
+    display: contents; /* Use contents to align items directly with header */
+}
+
+
+
+
+.container {
+    margin-top: 1rem;
+
+    .text-center {
+        margin-bottom: 1rem;
+    }
+
+    .d-flex {
+        justify-content: center;
+
+        .form-inline {
+            max-width: 600px; // Optional: Limits the form width for larger screens
+
+            .form-group {
+                display: flex;
+                flex-wrap: nowrap; // Ensures elements stay in a single row
+
+                .form-control {
+                    flex: 1; // Allows the input to grow and take available space
+                }
+
+                .btn {
+                    flex-shrink: 0; // Prevents the button from shrinking
+                    margin-left: 0.5rem; // Margin to align with input field
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .d-flex {
+        .form-inline {
+            .form-group {
+                flex-direction: column;
+                align-items: stretch;
+
+                .form-control,
+                .btn {
+                    width: 100%;
+                    margin-bottom: 0.625rem; // 10px
+                }
+
+                .btn {
+                    margin-left: 0; // Remove margin-left for button on small screens
+                }
+            }
+        }
+    }
+}

@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-@7m3(-5uhlwn1+&%ks5+x-*$sl*v1t0(77cc55nnt-bb!%^0-g
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'localhost',
+    'localhost', '0.0.0.0' ,'127.0.0.1'
 ]
 
 
@@ -92,8 +92,12 @@ WSGI_APPLICATION = 'nomencletureproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'HOST': 'localhost',
+        'PORT': '5432',
+        'PASSWORD': 'qnr63363'
     }
 }
 
