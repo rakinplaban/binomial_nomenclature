@@ -1,21 +1,61 @@
+/* Grid container */
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
 }
 
+/* Grid header */
 .grid-header {
-    display: contents; /* Use contents to make header align with rows */
+    display: flex;
+    justify-content: space-between;
     font-weight: bold;
+    background-color: #f1f1f1;
+    padding: 10px;
 }
 
+/* Flexbox layout for the grid content */
+.grid-content {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 0;
+}
+
+/* Individual grid items */
 .grid-item {
-    padding: 8px;
-    border: 1px solid #ddd;
+    flex: 1 1 50%;  /* 50% width for two columns */
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
 }
 
-.grid-row {
-    display: contents; /* Use contents to align items directly with header */
+/* Alphabetical navigation links */
+.alphabet-nav {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.alphabet-nav a {
+    margin: 0 5px;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #007bff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+/* Section headers (letters) */
+h2 {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-top: 20px;
+    border-bottom: 2px solid #007bff;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .grid-item {
+        flex: 1 1 50%; /* Full width on small screens */
+    }
 }
 
 
@@ -71,3 +111,5 @@
         }
     }
 }
+
+
