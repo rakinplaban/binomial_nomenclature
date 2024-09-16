@@ -9,34 +9,21 @@ from .models import ScientificName
 from django.views.generic.edit import FormView
 from django.contrib import messages
 from django.db.models import Q
-import json
+import json , itertools
 
 def index(request):
-    scientific_name = ScientificName.objects.all()
+    items  = ScientificName.objects.all().order_by('sci_name')
+    # Group the items by the first letter of `sci_name`
+    scientific_name = []
+    for letter, group in itertools.groupby(items, lambda item: item.sci_name[0].upper()):
+        scientific_name.append((letter, list(group)))  # Convert each group to a list
+
     content = {
         'scientific_name': scientific_name
     }
     return render(request, 'nomenclature/index.html',content)
 
-# def login_view(request):
-#     if request.method == 'POST':
-#         form = CustomLoginForm(request.POST, request=request)
-#         if form.is_valid():
-#             user = form.get_user()
-#             auth_login(request, user)
-#             return HttpResponseRedirect('index')  # Redirect to a success page.
-#     else:
-#         form = CustomLoginForm(request=request)
-#     return render(request, 'account/login.html', {'form': form})
 
-# def search(request):
-#     if request.method == "GET":
-#         search = request.GET['q']
-#         scientific_name = ScientificName.objects.filter(Q(sci_name__contains=search) | Q(real_name__contains=search))
-#         return render(request,"nomenclature/index.html",{
-#             "search" : search,
-#             'scientific_name': scientific_name
-#         })
     
 
 def autocomplete(request):
