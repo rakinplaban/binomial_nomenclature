@@ -205,3 +205,8 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'your-email@example.com'
 EMAIL_HOST_PASSWORD = 'your-email-password'
 DEFAULT_FROM_EMAIL = 'your-email@example.com'
+
+
+LOGIN_URL = '/admin-panel/login/'
+LOGIN_REDIRECT_URL = '/admin-panel/'  # Redirect after successful login
+

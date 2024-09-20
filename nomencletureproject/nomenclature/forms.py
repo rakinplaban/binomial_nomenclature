@@ -1,5 +1,5 @@
 from django import forms
-from .models import Contact
+from .models import Contact, ScientificName
 
 class ContactForm(forms.ModelForm):
     class Meta:
@@ -20,4 +20,11 @@ class ContactForm(forms.ModelForm):
                 'rows': 4
             }),
         }
+
+
+
+class ScientificNameForm(forms.ModelForm):
+    class Meta:
+        model = ScientificName
+        fields = ['sci_name', 'real_name']
 

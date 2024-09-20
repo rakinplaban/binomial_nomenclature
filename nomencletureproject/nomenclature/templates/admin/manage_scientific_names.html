@@ -1,0 +1,17 @@
+{% extends 'admin\admin_panel.html' %}
+
+{% block content %}
+    <h2>Manage Scientific Names</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Add New Scientific Name</button>
+    </form>
+
+    <h3>All Scientific Names</h3>
+    <ul>
+        {% for name in scientific_names %}
+            <li>{{ name.sci_name }} ({{ name.real_name }})</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
