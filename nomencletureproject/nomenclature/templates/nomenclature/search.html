@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% block title %}Search Results{% endblock %}
+{% block body %}
+    <div class="container">
+        <h2>Search Results for "{{ query }}"</h2>
+        <!-- <div class="grid-header"></div>
+            <div class="grid-item">Scientific Name</div>
+            <div class="grid-item">Real Name</div>
+        </div> -->
+        {% if results %}
+            
+                <div class="grid-content">
+                    {% for item in results %}
+                        <div class="grid-item">{{ item.sci_name }}</div> <!-- Scientific name -->
+                        <div class="grid-item">{{ item.real_name }}</div> <!-- Real name -->
+                    {% endfor %}
+                </div>
+            
+        {% else %}
+            <p>No results found.</p>
+        {% endif %}
+        
+    </div>
+{% endblock %}
