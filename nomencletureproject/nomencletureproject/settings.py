@@ -93,12 +93,21 @@ WSGI_APPLICATION = 'nomencletureproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
+        'NAME': 'nomencleture',
         'USER': 'postgres',
-        'HOST': 'localhost',
+        'HOST': 'db_nomencleture',
         'PORT': '5432',
         'PASSWORD': 'qnr63363'
     }
+
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'postgres',
+    #     'USER': 'postgres',
+    #     'HOST': 'localhost',
+    #     'PORT': '5432',
+    #     'PASSWORD': 'qnr63363'
+    # }
 }
 
 
