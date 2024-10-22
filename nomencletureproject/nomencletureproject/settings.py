@@ -69,7 +69,7 @@ ROOT_URLCONF = 'nomencletureproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/'nomenclature/templates/nomenclature/'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,8 +77,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                # allauth
-                 'django.template.context_processors.request',
             ],
         },
     },
@@ -93,12 +91,21 @@ WSGI_APPLICATION = 'nomencletureproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
+        'NAME': 'nomencleture',
         'USER': 'postgres',
-        'HOST': 'localhost',
+        'HOST': 'db_nomencleture',
         'PORT': '5432',
         'PASSWORD': 'qnr63363'
     }
+
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'postgres',
+    #     'USER': 'postgres',
+    #     'HOST': 'localhost',
+    #     'PORT': '5432',
+    #     'PASSWORD': 'qnr63363'
+    # }
 }
 
 
@@ -208,5 +215,5 @@ DEFAULT_FROM_EMAIL = 'your-email@example.com'
 
 
 LOGIN_URL = '/admin-panel/login/'
-LOGIN_REDIRECT_URL = '/admin-panel/'  # Redirect after successful login
+LOGIN_REDIRECT_URL = '/admin-panel/scientific-names/'  # Redirect after successful login
 
