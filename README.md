@@ -5,6 +5,7 @@ The Binomial Nomenclature Project aims to provide a comprehensive web applicatio
 
 This project showcases its complexity through various features, including user authentication, CRUD (Create, Read, Update, Delete) operations for managing scientific names, and a user-friendly interface that leverages JavaScript for dynamic interactions. The backend is built using Django, ensuring robust data management and security, while the front-end is designed to be mobile-responsive, catering to users on various devices.
 
+
 The application incorporates multiple models to represent different entities, such as organisms, families, and classifications, allowing for intricate relationships and data integrity. The distinctiveness of this project lies in its focus on an academic subject, which is rarely covered in standard course projects, thus making it a unique contribution to the field.
 
 
@@ -95,3 +96,9 @@ docker-compose down
   -  The application is designed to be mobile-responsive, ensuring usability across different devices.
   -  Future enhancements may include user roles, advanced search functionalities, and integration with external databases for biological data.
   -  Improve the custom admin panel and make it more user friendly.
+=======
+
+# References
+1. Binomial nomenclature. (2024). In Wikipedia. https://en.wikipedia.org/w/index.php?title=Binomial_nomenclature&oldid=1227348962
+2. Introduction—Django-allauth. (n.d.). Retrieved July 4, 2024, from https://docs.allauth.org/en/latest/introduction/index.html
+
