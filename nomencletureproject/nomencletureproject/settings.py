@@ -88,7 +88,11 @@ WSGI_APPLICATION = 'nomencletureproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+
+USE_LIVE_DB = os.getenv('USE_LIVE_DB', 'False') == 'True'
+
 DATABASES = {
+    
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'nomencleture',
@@ -96,7 +100,19 @@ DATABASES = {
         'HOST': 'db_nomencleture',
         'PORT': '5432',
         'PASSWORD': 'qnr63363'
+    },
+
+    'live' : {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'USER': 'postgres.sfsdxlxpggvfcxdlynhj',
+        'HOST': 'aws-0-us-east-1.pooler.supabase.com',
+        'PORT': '6543',
+        'PASSWORD': 'cuDgbF2lyCeIwC4u'
     }
+    
+
+
 
     # 'default': {
     #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
