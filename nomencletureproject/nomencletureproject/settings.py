@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+import socket
+# required for db choosing
+from django.db import connections
+from django.db.utils import OperationalError
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
     # 'allauth',
     # 'allauth.account',
     # 'django.contrib.sites',
@@ -88,7 +93,28 @@ WSGI_APPLICATION = 'nomencletureproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+
+# def check_local_db():
+#     """Check if the local database is accessible."""
+#     try:
+#         db_conn = connections['default']
+#         db_conn.cursor()  # Try to create a cursor to test the connection
+#         return True  # Connection successful
+#     except OperationalError:
+#         return False  # Connection failed
+
+def check_local_db():
+    """Check if the local database is accessible."""
+    try:
+        db_conn = connections['default']
+        db_conn.cursor()  # Try to create a cursor to test the connection
+        return True  # Connection successful
+    except OperationalError:
+        return False  # Connection failed
+
+
 DATABASES = {
+    
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'nomencleture',
@@ -96,7 +122,17 @@ DATABASES = {
         'HOST': 'db_nomencleture',
         'PORT': '5432',
         'PASSWORD': 'qnr63363'
+    },
+
+    'live' : {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'USER': 'postgres.sfsdxlxpggvfcxdlynhj',
+        'HOST': 'aws-0-us-east-1.pooler.supabase.com',
+        'PORT': '6543',
+        'PASSWORD': 'cuDgbF2lyCeIwC4u'
     }
+    
 
     # 'default': {
     #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -108,6 +144,14 @@ DATABASES = {
     # }
 }
 
+# Check if the local database is available; if not, switch to live
+# if not check_local_db():
+#     print("Local database not accessible. Switching to 'live' database.")
+#     DATABASES['default'] = DATABASES['live']  # Use the 'live' database as default
+
+if not check_local_db():
+    print("Local database not accessible. Switching to 'live' database.")
+    DATABASES['default'] = DATABASES['live']  # Use the 'live' database as default
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
