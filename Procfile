@@ -1,1 +1,1 @@
-web: gunicorn nomencletureproject.wsgi:application
+web: gunicorn nomencletureproject.wsgi
