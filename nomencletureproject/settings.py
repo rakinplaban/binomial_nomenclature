@@ -137,7 +137,7 @@ DATABASES = {
 }
 
 
-if not check_local_db():
+if not os.getenv("USE_LOCAL_DB") and not check_local_db():
     print("Local database not accessible. Switching to 'live' database.")
     DATABASES['default'] = DATABASES['live']  # Use the 'live' database as default
 
