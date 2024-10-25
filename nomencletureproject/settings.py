@@ -94,14 +94,6 @@ WSGI_APPLICATION = 'nomencletureproject.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 
-# def check_local_db():
-#     """Check if the local database is accessible."""
-#     try:
-#         db_conn = connections['default']
-#         db_conn.cursor()  # Try to create a cursor to test the connection
-#         return True  # Connection successful
-#     except OperationalError:
-#         return False  # Connection failed
 
 def check_local_db():
     """Check if the local database is accessible."""
@@ -144,10 +136,6 @@ DATABASES = {
     # }
 }
 
-# Check if the local database is available; if not, switch to live
-# if not check_local_db():
-#     print("Local database not accessible. Switching to 'live' database.")
-#     DATABASES['default'] = DATABASES['live']  # Use the 'live' database as default
 
 if not check_local_db():
     print("Local database not accessible. Switching to 'live' database.")
