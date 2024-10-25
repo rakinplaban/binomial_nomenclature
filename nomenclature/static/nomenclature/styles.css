@@ -1,0 +1,97 @@
+/* Grid container */
+.grid-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+/* Grid header */
+.grid-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  background-color: #f1f1f1;
+  padding: 10px;
+}
+
+/* Flexbox layout for the grid content */
+.grid-content {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 0;
+}
+
+/* Individual grid items */
+.grid-item {
+  flex: 1 1 50%; /* 50% width for two columns */
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Alphabetical navigation links */
+.alphabet-nav {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.alphabet-nav a {
+  margin: 0 5px;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #007bff;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+/* Section headers (letters) */
+h2 {
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin-top: 20px;
+  border-bottom: 2px solid #007bff;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .grid-item {
+    flex: 1 1 50%; /* Full width on small screens */
+  }
+}
+.container {
+  margin-top: 1rem;
+}
+.container .text-center {
+  margin-bottom: 1rem;
+}
+.container .d-flex {
+  justify-content: center;
+}
+.container .d-flex .form-inline {
+  max-width: 600px;
+}
+.container .d-flex .form-inline .form-group {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.container .d-flex .form-inline .form-group .form-control {
+  flex: 1;
+}
+.container .d-flex .form-inline .form-group .btn {
+  flex-shrink: 0;
+  margin-left: 0.5rem;
+}
+
+@media (max-width: 576px) {
+  .d-flex .form-inline .form-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .d-flex .form-inline .form-group .form-control,
+  .d-flex .form-inline .form-group .btn {
+    width: 100%;
+    margin-bottom: 0.625rem;
+  }
+  .d-flex .form-inline .form-group .btn {
+    margin-left: 0;
+  }
+}/*# sourceMappingURL=styles.css.map */

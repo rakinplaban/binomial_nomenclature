@@ -1,0 +1,26 @@
+version: "3.11"
+
+services:
+  db_nomencleture:
+    image: postgres
+    volumes:
+      - ./data/db_nomencleture:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=nomencleture 
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=qnr63363
+
+    ports:
+      - "5432:5432"
+
+  web:
+    build: .
+    environment:
+      - USE_LIVE_DB=false
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db_nomencleture
