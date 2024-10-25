@@ -95,51 +95,76 @@ WSGI_APPLICATION = 'nomencletureproject.wsgi.application'
 
 
 
-def check_local_db():
-    """Check if the local database is accessible."""
-    try:
-        db_conn = connections['default']
-        db_conn.cursor()  # Try to create a cursor to test the connection
-        return True  # Connection successful
-    except OperationalError:
-        return False  # Connection failed
+# def check_local_db():
+#     """Check if the local database is accessible."""
+#     try:
+#         db_conn = connections['default']
+#         db_conn.cursor()  # Try to create a cursor to test the connection
+#         return True  # Connection successful
+#     except OperationalError:
+#         return False  # Connection failed
 
 
-DATABASES = {
-    
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'nomencleture',
-        'USER': 'postgres',
-        'HOST': 'db_nomencleture',
-        'PORT': '5432',
-        'PASSWORD': 'qnr63363'
-    },
-
-    'live' : {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres.sfsdxlxpggvfcxdlynhj',
-        'HOST': 'aws-0-us-east-1.pooler.supabase.com',
-        'PORT': '6543',
-        'PASSWORD': 'cuDgbF2lyCeIwC4u'
+if os.getenv('RENDER'):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'postgres',
+            'USER': 'postgres.sfsdxlxpggvfcxdlynhj',
+            'HOST': 'aws-0-us-east-1.pooler.supabase.com',
+            'PORT': '6543',
+            'PASSWORD': 'cuDgbF2lyCeIwC4u'
+        }
     }
+else:
+    # Default to Docker configuration if not in Render
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'nomencleture',
+            'USER': 'postgres',
+            'HOST': 'db_nomencleture',
+            'PORT': '5432',
+            'PASSWORD': 'qnr63363'
+        }
+    }
+
+
+# DATABASES = {
+    
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'nomencleture',
+#         'USER': 'postgres',
+#         'HOST': 'db_nomencleture',
+#         'PORT': '5432',
+#         'PASSWORD': 'qnr63363'
+#     },
+
+#     'live' : {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'postgres',
+#         'USER': 'postgres.sfsdxlxpggvfcxdlynhj',
+#         'HOST': 'aws-0-us-east-1.pooler.supabase.com',
+#         'PORT': '6543',
+#         'PASSWORD': 'cuDgbF2lyCeIwC4u'
+#     }
     
 
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': 'postgres',
-    #     'USER': 'postgres',
-    #     'HOST': 'localhost',
-    #     'PORT': '5432',
-    #     'PASSWORD': 'qnr63363'
-    # }
-}
+#     # 'default': {
+#     #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#     #     'NAME': 'postgres',
+#     #     'USER': 'postgres',
+#     #     'HOST': 'localhost',
+#     #     'PORT': '5432',
+#     #     'PASSWORD': 'qnr63363'
+#     # }
+# }
 
 
-if not os.getenv("USE_LOCAL_DB") and not check_local_db():
-    print("Local database not accessible. Switching to 'live' database.")
-    DATABASES['default'] = DATABASES['live']  # Use the 'live' database as default
+# if not os.getenv("USE_LOCAL_DB") and not check_local_db():
+#     print("Local database not accessible. Switching to 'live' database.")
+#     DATABASES['default'] = DATABASES['live']  # Use the 'live' database as default
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
