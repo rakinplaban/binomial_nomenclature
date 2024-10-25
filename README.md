@@ -95,3 +95,5 @@ docker-compose down
   -  The application is designed to be mobile-responsive, ensuring usability across different devices.
   -  Future enhancements may include user roles, advanced search functionalities, and integration with external databases for biological data.
   -  Improve the custom admin panel and make it more user friendly.
+
+<!-- Command -->
